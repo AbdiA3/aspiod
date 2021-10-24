@@ -151,7 +151,7 @@
 	}
 
 	@media (max-width: 960px) {
-		main {
+		.main {
 			/*display: none;*/
 			width: 80%;
 		}
@@ -164,9 +164,16 @@
 	}
 
 	@media (max-width: 768px) {
-		main {
+		.main {
 			/*display: none;*/
-			width: 95%;
+			width: 92%;
+		}
+
+		.main header {
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			text-align: center;
 		}
 
 		.main-content {
