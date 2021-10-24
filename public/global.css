@@ -18,6 +18,6 @@
 	font-size: 14px;
 }
 
-body {
+html {
 	background-color: var(--bg-color);
 }
