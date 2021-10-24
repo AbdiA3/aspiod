@@ -118,8 +118,10 @@
 	}
 	
 	.main-content > img {
-		width: 45%;
+		height: 18em;
 		border-radius: 0.4em;
+		object-fit: cover;
+		object-position: center;
 	}
 
 	.main-content .text-content {
@@ -148,6 +150,38 @@
 		color: #FEFEFE;
 	}
 
+	@media (max-width: 960px) {
+		main {
+			/*display: none;*/
+			width: 80%;
+		}
+
+		.main-content {
+			margin-top: 2em;
+			display: flex;
+			justify-content: space-between;
+		}
+	}
+
+	@media (max-width: 768px) {
+		main {
+			/*display: none;*/
+			width: 95%;
+		}
+
+		.main-content {
+			margin-top: 2em;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+
+		.main-content .text-content {
+			margin-left: 0;
+			margin-top: 1em;
+			margin-bottom: 2em;
+		}
+	}
 
 
 </style>
