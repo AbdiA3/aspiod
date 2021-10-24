@@ -69,7 +69,9 @@
 
 	.main {
 		width: 70%;
-		margin: 2.4em auto;
+		padding: 2.4em 0;
+		margin: auto;
+		height: 100vh;
 	}
 
 	.main header {
