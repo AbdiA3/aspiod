@@ -43,8 +43,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		margin-bottom: 0.5em;
-		padding-bottom: 0.5em;
+		margin-top: 1em;
+		padding-top: 1em;
 		border-top: 0.1em solid #FEFEFE;
 	}
 
