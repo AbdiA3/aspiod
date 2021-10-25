@@ -9,10 +9,13 @@
     <div class="placeholder"></div>
     <div class="placeholder"></div>
     <div class="placeholder"></div>
+    <div class="placeholder"></div>
+    <div class="placeholder"></div>
 </div>
 
 <style>
     .wrapper {
+        justify-content: center;
         display: flex;
         flex-wrap: wrap;
         gap: 2em;
@@ -35,7 +38,7 @@
         }
 
         50% {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(200, 200, 200, 0.1);
         }
 
         100% {

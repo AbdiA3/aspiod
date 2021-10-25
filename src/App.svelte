@@ -1,10 +1,11 @@
 <script>
 	import MainContent from './components/MainContent.svelte'
+	import MainContentMultiple from './components/MainContentMultiple.svelte'
 	import LoadingPlaceholder from './components/LoadingPlaceholder.svelte'
 	import LoadingPlaceholderMultiple from './components/LoadingPlaceholderMultiple.svelte'
 	import DateSelector from './components/DateSelector.svelte'
 		
-	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0'
+	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0&thumbs=true'
 
 	let url = base_url
 	let multiple = false
@@ -36,6 +37,10 @@
 			     })
 			     .catch(err => { alert(err) })
     
+    const view = (evt) => {
+    	content = evt.detail
+    	multiple = false
+    }
 
 </script>
 
@@ -75,9 +80,7 @@
 		{#await promise}	
 			<LoadingPlaceholderMultiple />
 		{:then data}
-			{#each content as c}
-				<p style="color: white">{ JSON.stringify(c) }</p>
-			{/each}
+			<MainContentMultiple { content } on:view={ view } />
 		{:catch error}
 			{ alert(error) }
 		{/await}

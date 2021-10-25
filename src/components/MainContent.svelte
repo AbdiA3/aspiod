@@ -5,8 +5,14 @@
 </script>
 
 <div class="main-content">
-    <img src={ content.url } alt={ content.url }>
-
+    {#if content.media_type === 'video'} 
+        <a href={ content.url } title={ content.url } class="video-link">
+            <span class="media-type">{ content.media_type }</span>
+            <img src={ content.thumbnail_url } alt={ content.thumbnail_url }>
+        </a>
+    {:else}
+        <img src={ content.url } alt={ content.url }>
+    {/if}
     <div class="text-content">
         <h2 class="title">{ content.title }</h2>
         <p class="date">
@@ -30,6 +36,15 @@
 
     .bold {
         font-weight: 800;
+    }
+
+    .video-link {
+        border-radius: 0.4em;
+        position: relative;
+    }
+
+    .video-link {
+        border-radius: 0.4em;
     }
 
     .main-content {
@@ -96,6 +111,19 @@
         .main-content > img {
             width: 100%;
         }
+    }
+
+    .media-type {
+        position: absolute;
+        top: 0.4em;
+        color: #FEFEFE;
+        font-size: 0.8em;
+        padding: 0.2em 0.8em;
+        border-radius: 1000em;
+        display: block;
+        background-color: #DD4F43;
+        right: 0.4em;
+
     }
 
 </style>
