@@ -57,7 +57,7 @@
 		</div>
 
 	{:catch error}
-
+		{ alert(error) }
 	{/await}
 
 </div>
@@ -113,12 +113,14 @@
 
 	.main-content {
 		margin-top: 2em;
+		margin-bottom: 2em;
 		display: flex;
 		justify-content: space-between;
 	}
 	
 	.main-content > img {
-		height: 18em;
+		height: 100%;
+		width: 40%;
 		border-radius: 0.4em;
 		object-fit: cover;
 		object-position: center;
