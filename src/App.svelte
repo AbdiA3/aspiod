@@ -190,6 +190,10 @@
 			margin-top: 1em;
 			margin-bottom: 2em;
 		}
+
+		.main-content > img {
+			width: 100%;
+		}
 	}
 
 
