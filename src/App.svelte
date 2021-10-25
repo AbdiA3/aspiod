@@ -47,7 +47,7 @@
 				</p>
 				{#if content.copyright}
 					<p class="copyright">
-						&copy; content.copyright
+						&copy; { content.copyright }
 					</p>
 				{/if}
 				{#if content.hdurl}
