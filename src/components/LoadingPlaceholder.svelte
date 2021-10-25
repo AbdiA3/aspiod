@@ -30,7 +30,7 @@
     .main-content .img {
         width: 40%;
         height: 18em;
-  5   5   b50ckground-color: rgba(0, 0, 0, 0.3);
+        background-color: rgba(50, 50, 50, 0.3);
         border-radius: 0.4em;
         object-fit: cover;
         object-position: center;
