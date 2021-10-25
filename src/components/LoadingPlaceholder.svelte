@@ -122,9 +122,8 @@
         }
 
         50% {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: rgba(200, 200, 200, 0.1);
         }
-
         100% {
             background-color: rgba(200, 200, 200, 0.3);
         }
