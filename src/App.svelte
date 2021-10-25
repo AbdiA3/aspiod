@@ -1,9 +1,10 @@
 <script>
 	import MainContent from './components/MainContent.svelte'
+	import LoadingPlaceholder from './components/LoadingPlaceholder.svelte'
 		
 	const url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0'
 
-	let content = null
+	let content = {}
 
 	let promise = fetch(url)
 			     .then(res => res.json())
@@ -32,7 +33,7 @@
 	</header>
 
 	{#await promise}
-		loading ...
+		<LoadingPlaceholder />
 	{:then data}
 		<MainContent { content } />
 	{:catch error}
