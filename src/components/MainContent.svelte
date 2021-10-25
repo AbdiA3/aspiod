@@ -41,11 +41,13 @@
     .video-link {
         border-radius: 0.4em;
         position: relative;
+        /*width: 100%;*/
+        display: block;
     }
 
     .video-link img {
-        max-width: 40%;
-        height: 100%;
+        width: 18em;
+        /*height: 100%;*/
         border-radius: 0.4em;
     }
 
@@ -115,7 +117,7 @@
         }
 
         .video-link img {
-            max-width: 100%;
+            width: 100%;
         }
     }
 
