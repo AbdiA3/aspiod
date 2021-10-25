@@ -1,6 +1,7 @@
 <script>
 	import MainContent from './components/MainContent.svelte'
 	import LoadingPlaceholder from './components/LoadingPlaceholder.svelte'
+	import LoadingPlaceholderMultiple from './components/LoadingPlaceholderMultiple.svelte'
 	import DateSelector from './components/DateSelector.svelte'
 		
 	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0'
@@ -14,9 +15,9 @@
 
     const set_date = (evt) => {
     	date_selector = false
-    	let date = evt.detail.date
-    	let start_date = evt.detail.start_date 
-    	let end_date = evt.detail.end_date
+    	let date = evt.detail.date ?? ''
+    	let start_date = evt.detail.start_date ?? ''
+    	let end_date = evt.detail.end_date ?? ''
 
     	if(date) {
     		url = base_url + '&date=' + date
@@ -71,7 +72,15 @@
 			{ alert(error) }
 		{/await}
 	{:else}
-		multiple
+		{#await promise}	
+			<LoadingPlaceholderMultiple />
+		{:then data}
+			{#each content as c}
+				<p style="color: white">{ JSON.stringify(c) }</p>
+			{/each}
+		{:catch error}
+			{ alert(error) }
+		{/await}
 	{/if}
 
 </div>
