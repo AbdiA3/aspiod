@@ -43,7 +43,9 @@
         position: relative;
     }
 
-    .video-link {
+    .video-link img {
+        max-width: 40%;
+        height: 100%;
         border-radius: 0.4em;
     }
 
@@ -110,6 +112,10 @@
 
         .main-content > img {
             width: 100%;
+        }
+
+        .video-link img {
+            max-width: 100%;
         }
     }
 
