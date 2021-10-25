@@ -3,24 +3,44 @@
 	import LoadingPlaceholder from './components/LoadingPlaceholder.svelte'
 	import DateSelector from './components/DateSelector.svelte'
 		
-	const url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0'
+	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0'
+
+	let url = base_url
+	let multiple = false
 
 	let content = {}
 
 	let date_selector = false
 
-	let promise = fetch(url)
+    const set_date = (evt) => {
+    	date_selector = false
+    	let date = evt.detail.date
+    	let start_date = evt.detail.start_date 
+    	let end_date = evt.detail.end_date
+
+    	if(date) {
+    		url = base_url + '&date=' + date
+    		multiple = false
+    	} else {
+    		url = base_url + '&start_date=' + start_date + '&end_date=' + end_date
+    		multiple = true
+    	}
+
+    }
+
+	$: promise = fetch(url)
 			     .then(res => res.json())
 			     .then(data => {
 			     	content = data
 			     })
 			     .catch(err => { alert(err) })
+    
 
 </script>
 
 <div class="main">
 	{#if date_selector}
-		<DateSelector on:close_date_selector={ () => { date_selector = false } }/>
+		<DateSelector on:close_date_selector={ () => { date_selector = false } } on:date_selected={ set_date } />
 	{/if}
 	<header>
 		<div class="brand">
@@ -42,13 +62,17 @@
 		</div>
 	</header>
 
-	{#await promise}
-		<LoadingPlaceholder />
-	{:then data}
-		<MainContent { content } />
-	{:catch error}
-		{ alert(error) }
-	{/await}
+	{#if !multiple}
+		{#await promise}
+			<LoadingPlaceholder />
+		{:then data}
+			<MainContent { content } />
+		{:catch error}
+			{ alert(error) }
+		{/await}
+	{:else}
+		multiple
+	{/if}
 
 </div>
 

@@ -5,7 +5,7 @@
 
     const dispatch = new createEventDispatcher()
 
-    let date_type = 1
+    let date_type = true
     let date
     let start_date
     let end_date
@@ -15,43 +15,58 @@
     }
 
     const close_date_selector_key = (evt) => {
-        if(evt.key === 'Escape') close_date_selector() 
+        if(evt.key === 'Escape') close_date_selector()
+    }
+
+    const date_selected = () => {
+        dispatch('date_selected', { date, start_date, end_date })
+    }
+
+    const change_date_type = () => {
+        date_type = !date_type
+
+        if(date_type) {
+            start_date = ''
+            end_date = ''
+        } else {
+            date = ''
+        }
     }
 
 </script>
 
-
-<div class="overlay" on:click|self={ close_date_selector } on:keydown = { close_date_selector_key }>
+<svelte:window on:keydown = { close_date_selector_key } />
+<div class="overlay" on:click|self={ close_date_selector }>
     <div class="date-selector-card">
-        <button class="toggle" type="button" on:click={ () => { date_type = !date_type } }>
+        <button class="toggle" type="button" on:click={ change_date_type }>
             Change to 
-            {#if date_type == 1}
+            {#if date_type}
                 date range
             {:else}
                 single date
             {/if}
         </button>
-        {#if date_type == 1}
+        {#if date_type}
             <div class="single-date">
                 <div class="input-field">
                     <label for="date">Select a date</label>
-                    <input id="date" type="date" name="date">
+                    <input bind:value={ date } id="date" type="date" name="date">
                 </div>
             </div>
         {:else}
             <div class="date-range">
                 <div class="input-field">
                     <label for="start-date">Start Date</label>
-                    <input type="date" name="start_date" id="start-date">
+                    <input bind:value={ start_date } type="date" name="start_date" id="start-date">
                 </div>
 
                 <div class="input-field">
                     <label for="end-date">End Date</label>
-                    <input type="date" name="end_date" id="end-date">
+                    <input bind:value={ end_date } type="date" name="end_date" id="end-date">
                 </div>
             </div>
         {/if}
-        <button class="done" type="button">
+        <button class="done" type="button" on:click|self={ date_selected }>
             Done
         </button>
     </div>
@@ -59,11 +74,12 @@
 
 <style>
     .overlay {
-        position: absolute;
+        position: fixed;
         top: 0;
         bottom: 0;
         left: 0;
         right: 0;
+        height: 100%;
         background-color: rgba(0, 0, 0, 0.6);
         display: flex;
         align-items: center;
