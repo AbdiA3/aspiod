@@ -30,7 +30,7 @@
     .main-content .img {
         width: 40%;
         height: 18em;
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         border-radius: 0.4em;
         object-fit: cover;
         object-position: center;
@@ -45,7 +45,7 @@
 
     .main-content .text-content h2 {
         animation: 1s infinite blink;
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         width: 100%;
         height: 2em;
         margin-bottom: 0.4em;
@@ -54,7 +54,7 @@
 
     .main-content .text-content p.date {
         animation: 1s infinite blink;
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         width: 8em;
         height: 1.4em;
         margin-top: 0.6em;
@@ -63,7 +63,7 @@
 
     .main-content .text-content p.explanation {
         animation: 1s infinite blink;
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         width: 100%;
         height: 14em;
         margin-top: 0.6em;
@@ -71,7 +71,7 @@
     }
 
     .main-content .text-content p.copyright {
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         animation: 1s infinite blink;
         width: 12em;
         height: 1.4em;
@@ -83,7 +83,7 @@
         animation: 1s infinite blink;
         width: 9em;
         height: 3em;
-        background-color: rgba(50, 50, 50, 0.3);
+        background-color: rgba(200, 200, 200, 0.3);
         border-radius: 0.4em;
         margin-top: 1em;
     }
@@ -118,7 +118,7 @@
 
     @keyframes blink {
         0% {
-           background-color: rgba(50, 50, 50, 0.3); 
+           background-color: rgba(200, 200, 200, 0.3); 
         }
 
         50% {
@@ -126,7 +126,7 @@
         }
 
         100% {
-            background-color: rgba(50, 50, 50, 0.3);
+            background-color: rgba(200, 200, 200, 0.3);
         }
     }
 
