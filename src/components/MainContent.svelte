@@ -64,13 +64,11 @@
     }
 
     .main-content .text-content .download-btn {
-        padding: 0.6em 2em;
-        background-color: var(--accent-color);
         border-radius: 0.2em;
-        text-decoration: none;
+        font-size: 0.9em;
         margin-top: 1em;
         display: inline-block;
-        color: #FEFEFE;
+        color: var(--accent-color);
     }
 
     @media (max-width: 960px) {
