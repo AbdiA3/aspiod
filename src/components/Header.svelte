@@ -13,7 +13,6 @@
         dispatch('open_date_selector')
     }
 
-    
 </script>
 
 <header>

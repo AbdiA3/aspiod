@@ -131,7 +131,6 @@
         display: block;
         background-color: #DD4F43;
         right: 0.4em;
-
     }
 
 </style>

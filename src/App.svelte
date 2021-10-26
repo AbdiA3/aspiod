@@ -1,4 +1,5 @@
 <script>
+
 	import MainContent from './components/MainContent.svelte'
 	import Header from './components/Header.svelte'
 	import MainContentMultiple from './components/MainContentMultiple.svelte'
@@ -6,6 +7,7 @@
 	import LoadingPlaceholderMultiple from './components/LoadingPlaceholderMultiple.svelte'
 	import DateSelector from './components/DateSelector.svelte'
 		
+
 	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0&thumbs=true'
 
 	let url = base_url
@@ -28,7 +30,6 @@
     		url = `${base_url}&start_date=${start_date}&end_date=${end_date}`
     		multiple = true
     	}
-
     }
 
     const get_n_random = () => {
@@ -52,6 +53,7 @@
 </script>
 
 <div class="main">
+	
 	{#if date_selector}
 		<DateSelector on:close_date_selector={ () => { date_selector = false } } on:date_selected={ set_date } />
 	{/if}

@@ -14,6 +14,7 @@
 </div>
 
 <style>
+    
     .wrapper {
         justify-content: center;
         display: flex;

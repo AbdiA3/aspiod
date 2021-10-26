@@ -1,6 +1,4 @@
-<script>
-        
-</script>
+<script></script>
 
 <div class="main-content">
     <div class="img"></div>
