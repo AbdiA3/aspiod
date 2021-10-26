@@ -12,7 +12,9 @@
 
     const min_date = new Date('1995-06-16')
     const today = new Date()
-    let errors = []
+    let invalid_date_min
+    let invalid_date_max
+    let valid = true
 
     const close_date_selector = () => {
         dispatch('close_date_selector')
@@ -23,17 +25,21 @@
     }
 
     const date_selected = () => {
-        let invalid_date_min = { 'invalid_date_min': 'The date you select must be after 1995-06-16' }
-        let invalid_date_max = { 'invalid_date_max': 'The date you select must not be after today' }
         let date_object = new Date(date)
         let start_date_object = new Date(start_date)
         let end_date_object = new Date(end_date)
-        if(date_object < min_date  || start_date_object < min_date) {
-            errors = [ invalid_date_min ]
+        if((date_object < min_date  || start_date_object < min_date) && (date_object > today || end_date_object > today)) {
+            invalid_date_min = 'The date you select must be after 1995-06-16'
+            invalid_date_max = 'The date you select must not be after today'
+        } else if(date_object < min_date  || start_date_object < min_date) {
+            invalid_date_min = 'The date you select must be after 1995-06-16'
+            invalid_date_max = null
         } else if(date_object > today || end_date_object > today) {
-            errors = [ invalid_date_max ]
+            invalid_date_max = 'The date you select must not be after today'
+            invalid_date_min = null
         } else {
-            errors = []
+            invalid_date_max = null
+            invalid_date_min = null
             dispatch('date_selected', { date, start_date, end_date })
         }
 
@@ -48,8 +54,9 @@
         } else {
             date = ''
         }
-
-        errors = []
+        
+        invalid_date_max = null
+        invalid_date_min = null
     }
 
 </script>
@@ -70,15 +77,11 @@
                 <div class="input-field">
                     <label for="date">Select a date</label>
                     <input bind:value={ date } id="date" type="date" name="date">
-                    {#if errors}
-                        {#each errors as error} 
-                            {#if error.invalid_date_min}
-                                <p class="error">{ error.invalid_date_min }</p>
-                            {/if}
-                            {#if error.invalid_date_max}
-                                <p class="error">{ error.invalid_date_max }</p>
-                            {/if}
-                        {/each}
+                    {#if invalid_date_min}
+                        <p class="error">{ invalid_date_min }</p>
+                    {/if}
+                    {#if invalid_date_max}
+                        <p class="error">{ invalid_date_max }</p>
                     {/if}
                 </div>
             </div>
@@ -87,24 +90,16 @@
                 <div class="input-field">
                     <label for="start-date">Start Date</label>
                     <input bind:value={ start_date } type="date" name="start_date" id="start-date">
-                    {#if errors}
-                        {#each errors as error} 
-                            {#if error.invalid_date_min}
-                                <p class="error">{ error.invalid_date_min }</p>
-                            {/if}
-                        {/each}
+                    {#if invalid_date_min}
+                        <p class="error">{ invalid_date_min }</p>
                     {/if}
                 </div>
 
                 <div class="input-field">
                     <label for="end-date">End Date</label>
                     <input bind:value={ end_date } type="date" name="end_date" id="end-date">
-                    {#if errors}
-                        {#each errors as error} 
-                            {#if error.invalid_date_max}
-                                <p class="error">{ error.invalid_date_max }</p>
-                            {/if}
-                        {/each}
+                    {#if invalid_date_max}
+                        <p class="error">{ invalid_date_max }</p>
                     {/if}
                 </div>
             </div>
