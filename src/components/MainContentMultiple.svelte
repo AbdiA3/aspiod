@@ -82,9 +82,4 @@
         object-fit: cover;
     }
 
-
-
-
-
-
 </style>
