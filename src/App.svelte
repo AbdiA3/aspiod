@@ -30,17 +30,23 @@
 
     }
 
+    const get_n_random = () => {
+    	const n = 10
+    	url = base_url + '&count=' + n
+    	multiple = true
+    }
+
+    const view = (evt) => {
+    	content = evt.detail
+    	multiple = false
+    }
+
 	$: promise = fetch(url)
 			     .then(res => res.json())
 			     .then(data => {
 			     	content = data
 			     })
 			     .catch(err => { alert(err) })
-    
-    const view = (evt) => {
-    	content = evt.detail
-    	multiple = false
-    }
 
 </script>
 
@@ -57,7 +63,7 @@
 		</div>
 		<div class="left-nav">
 			<button type="button" on:click={ () => { date_selector = !date_selector } }>Select Date</button>
-			<button type="button" class="secondary" on:click={ () => { get_n_random } }>Get 10 random images</button>
+			<button type="button" class="secondary" on:click={ get_n_random }>Get 10 random images</button>
 
 			<p>
 				<span>Abdi Adem</span>
