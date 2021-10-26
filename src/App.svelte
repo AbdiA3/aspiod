@@ -21,10 +21,10 @@
     	let end_date = evt.detail.end_date ?? ''
 
     	if(date) {
-    		url = base_url + '&date=' + date
+    		url = `${base_url}&date=${date}`
     		multiple = false
     	} else {
-    		url = base_url + '&start_date=' + start_date + '&end_date=' + end_date
+    		url = `${base_url}&start_date=${start_date}&end_date=${end_date}`
     		multiple = true
     	}
 
@@ -32,7 +32,7 @@
 
     const get_n_random = () => {
     	const n = 10
-    	url = base_url + '&count=' + n
+    	url = `${base_url}&count=${n}`
     	multiple = true
     }
 
