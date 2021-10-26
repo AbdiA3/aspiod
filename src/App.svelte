@@ -35,6 +35,12 @@
     const get_n_random = () => {
     	const n = 10
     	url = `${base_url}&count=${n}`
+    	promise = fetch(url)
+			     .then(res => res.json())
+			     .then(data => {
+			     	content = data
+			     })
+			     .catch(err => { alert(err) })
     	multiple = true
     }
 
