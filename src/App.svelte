@@ -57,6 +57,7 @@
 		</div>
 		<div class="left-nav">
 			<button type="button" on:click={ () => { date_selector = !date_selector } }>Select Date</button>
+			<button type="button" class="secondary" on:click={ () => { get_n_random } }>Get 10 random images</button>
 
 			<p>
 				<span>Abdi Adem</span>
@@ -146,6 +147,19 @@
         color: #FEFEFE;
         border: none;
         cursor: pointer;
+	}
+
+	.main header .left-nav button.secondary {
+        border: 0.1em solid #FEFEFE;
+        background-color: var(--bg-color);
+        color: #FEFEFE;
+        transition: all 0.1s ease-in-out;
+	}
+
+	.main header .left-nav button.secondary:hover {
+		border: 0.1em solid #FEFEFE;
+        background-color: #FEFEFE;
+        color: var(--bg-color);
 	}
 
 	.main header p * {
