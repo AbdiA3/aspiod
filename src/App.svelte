@@ -50,8 +50,10 @@
 	{/if}
 	<header>
 		<div class="brand">
-			<h1>AsPiOD</h1>
-			<h3>Astronomy Picture of the Day</h3>
+			<a href="/" title="Home">
+				<h1>AsPiOD</h1>
+				<h3>Astronomy Picture of the Day</h3>
+			</a>
 		</div>
 		<div class="left-nav">
 			<button type="button" on:click={ () => { date_selector = !date_selector } }>Select Date</button>
@@ -105,6 +107,11 @@
 		margin-bottom: 0.6em;
 		padding-bottom: 0.6em;
 		border-bottom: 0.1em solid #FEFEFE;
+	}
+
+	.main header .brand a {
+		text-decoration: none;
+		color: #FEFEFE;
 	}
 
 	.main header h1 {
