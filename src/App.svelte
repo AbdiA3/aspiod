@@ -77,7 +77,11 @@
 		{#await promise}
 			<LoadingPlaceholder />
 		{:then data}
-			<MainContent { content } />
+			{#if content.code && content.code == 404}
+				error
+			{:else}
+				<MainContent { content } />
+			{/if}
 		{:catch error}
 			{ alert(error) }
 		{/await}
