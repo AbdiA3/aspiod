@@ -1,7 +1,7 @@
 <script>
 
     import { createEventDispatcher } from 'svelte'
-    
+    import Overlay from './Overlay.svelte'    
 
     const dispatch = new createEventDispatcher()
 
@@ -18,10 +18,6 @@
 
     const close_date_selector = () => {
         dispatch('close_date_selector')
-    }
-
-    const close_date_selector_key = (evt) => {
-        if(evt.key === 'Escape') close_date_selector()
     }
 
     const date_selected = () => {
@@ -61,8 +57,8 @@
 
 </script>
 
-<svelte:window on:keydown = { close_date_selector_key } />
-<div class="overlay" on:click|self={ close_date_selector }>
+<Overlay on:close_date_selector={ close_date_selector }>
+
     <div class="date-selector-card">
         <button class="toggle" type="button" on:click={ change_date_type }>
             Change to 
@@ -108,23 +104,10 @@
             Done
         </button>
     </div>
-</div>
+    
+</Overlay>
 
 <style>
-    
-    .overlay {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.6);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 10000;
-    }
 
     .error {
         font-size: 0.8em;
