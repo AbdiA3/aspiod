@@ -5,8 +5,8 @@
 
     const dispatch = new createEventDispatcher()
 
-    const get_n_random = () => {
-        dispatch('get_n_random')
+    const open_random_image = () => {
+        dispatch('open_random_image')
     }
 
     const open_date_selector = () => {
@@ -23,7 +23,7 @@
         </a>
     </div>
     <div class="left-nav">
-        <button type="button" class="secondary" on:click={ get_n_random }>Get 10 random images</button>
+        <button type="button" class="secondary" on:click={ open_random_image }>Get random images</button>
         <div class="row">
             <button type="button" on:click={ open_date_selector }>Select Date</button>
             <p>

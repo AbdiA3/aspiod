@@ -6,6 +6,7 @@
 	import LoadingPlaceholder from './components/LoadingPlaceholder.svelte'
 	import LoadingPlaceholderMultiple from './components/LoadingPlaceholderMultiple.svelte'
 	import DateSelector from './components/DateSelector.svelte'
+	import TextInput from './components/TextInput.svelte'
 		
 
 	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0&thumbs=true'
@@ -16,6 +17,7 @@
 	let content = {}
 
 	let date_selector = false
+	let count_input = false
 
     const set_date = (evt) => {
     	date_selector = false
@@ -32,8 +34,9 @@
     	}
     }
 
-    const get_n_random = () => {
-    	const n = 10
+    const get_n_random = (evt) => {
+    	count_input = false
+    	const n = evt.detail
     	url = `${base_url}&count=${n}`
     	promise = fetch(url)
 			     .then(res => res.json())
@@ -64,7 +67,11 @@
 		<DateSelector on:close_date_selector={ () => { date_selector = false } } on:date_selected={ set_date } />
 	{/if}
 
-	<Header on:open_date_selector={ () => { date_selector = !date_selector } } on:get_n_random={ get_n_random } />
+	{#if count_input}
+		<TextInput on:set_count={ get_n_random } />
+	{/if}
+
+	<Header on:open_date_selector={ () => { date_selector = !date_selector } } on:open_random_image={ () => { count_input = !count_input } } />
 
 	{#if !multiple}
 		{#await promise}
