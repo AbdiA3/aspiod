@@ -26,7 +26,9 @@
     	let start_date = evt.detail.start_date ?? ''
     	let end_date = evt.detail.end_date ?? ''
 
-    	if(date) {
+    	if(!date && !start_date && !end_date) {
+    		url = base_url
+    	} else if(date) {
     		url = `${base_url}&date=${date}`
     		multiple = false
     	} else {
