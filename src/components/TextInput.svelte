@@ -16,15 +16,20 @@
         dispatch('set_count', count)
     }
 
+    const check_keypress = (evt) => {
+        if(evt.key === 'Enter') count_input()
+    }
+
 
 </script>
 
+<svelte:window on:keydown={ check_keypress } />
 <Overlay on:close={ close }>
 
     <div class="card">
         <div class="input-field">
             <label for="count">How many images do you want?</label>
-            <input bind:value={ count } id="count" type="number" name="count">
+            <input autofocus bind:value={ count } id="count" type="number" name="count">
         </div>
 
         <button class="done" type="button" on:click|self={ count_input }>

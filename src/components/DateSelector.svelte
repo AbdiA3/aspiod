@@ -55,8 +55,13 @@
         invalid_date_min = null
     }
 
+    const check_keypress = (evt) => {
+        if(evt.key === 'Enter') date_selected()
+    }
+
 </script>
 
+<svelte:window on:keydown={ check_keypress } />
 <Overlay on:close={ close }>
 
     <div class="date-selector-card">
@@ -72,7 +77,7 @@
             <div class="single-date">
                 <div class="input-field">
                     <label for="date">Select a date</label>
-                    <input bind:value={ date } id="date" type="date" name="date">
+                    <input autofocus bind:value={ date } id="date" type="date" name="date">
                     {#if invalid_date_min}
                         <p class="error">{ invalid_date_min }</p>
                     {/if}
@@ -85,7 +90,7 @@
             <div class="date-range">
                 <div class="input-field">
                     <label for="start-date">Start Date</label>
-                    <input bind:value={ start_date } type="date" name="start_date" id="start-date">
+                    <input autofocus bind:value={ start_date } type="date" name="start_date" id="start-date">
                     {#if invalid_date_min}
                         <p class="error">{ invalid_date_min }</p>
                     {/if}
