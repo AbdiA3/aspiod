@@ -7,6 +7,7 @@
 	import LoadingPlaceholderMultiple from './components/LoadingPlaceholderMultiple.svelte'
 	import DateSelector from './components/DateSelector.svelte'
 	import TextInput from './components/TextInput.svelte'
+	import NoData from './components/NoData.svelte'
 		
 
 	const base_url = 'https://api.nasa.gov/planetary/apod?api_key=tJOWsZ9xvBHgXl4E58wve64bht5tkY0UZaO9Zgq0&thumbs=true'
@@ -52,6 +53,10 @@
     	multiple = false
     }
 
+    const return_home = () => {
+    	url = base_url
+    }
+
 	$: promise = fetch(url)
 			     .then(res => res.json())
 			     .then(data => {
@@ -78,7 +83,7 @@
 			<LoadingPlaceholder />
 		{:then data}
 			{#if content.code && content.code == 404}
-				error
+				<NoData on:close={ return_home } />
 			{:else}
 				<MainContent { content } />
 			{/if}
