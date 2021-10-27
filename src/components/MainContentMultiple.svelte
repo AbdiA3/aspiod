@@ -15,7 +15,7 @@
 
 <div class="main-wrapper">
     <div class="wrapper">
-        {#each content as c}
+        {#each content as c (c.date)}
             <div class="image-container">
                 <a href="#" on:click|preventDefault={ () => open(c) } title={ c.title }>
                     <span class="date-tag">{ c.date }</span>
