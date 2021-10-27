@@ -16,8 +16,8 @@
     let invalid_date_max
     let valid = true
 
-    const close_date_selector = () => {
-        dispatch('close_date_selector')
+    const close = () => {
+        dispatch('close')
     }
 
     const date_selected = () => {
@@ -57,7 +57,7 @@
 
 </script>
 
-<Overlay on:close_date_selector={ close_date_selector }>
+<Overlay on:close={ close }>
 
     <div class="date-selector-card">
         <button class="toggle" type="button" on:click={ change_date_type }>
@@ -104,7 +104,7 @@
             Done
         </button>
     </div>
-    
+
 </Overlay>
 
 <style>

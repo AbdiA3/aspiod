@@ -4,19 +4,19 @@
     
 
     const dispatch = new createEventDispatcher()
-    
-    const close_date_selector = () => {
-        dispatch('close_date_selector')
+
+    const close = () => {
+        dispatch('close')
     }
 
-    const close_date_selector_key = (evt) => {
-        if(evt.key === 'Escape') close_date_selector()
+    const close_key = (evt) => {
+        if(evt.key === 'Escape') close()
     }
 
 </script>
 
-<svelte:window on:keydown = { close_date_selector_key } />
-<div class="overlay" on:click|self={ close_date_selector }>
+<svelte:window on:keydown = { close_key } />
+<div class="overlay" on:click|self={ close }>
     <slot></slot>
 </div>
 

@@ -64,11 +64,11 @@
 <div class="main">
 	
 	{#if date_selector}
-		<DateSelector on:close_date_selector={ () => { date_selector = false } } on:date_selected={ set_date } />
+		<DateSelector on:close={ () => { date_selector = false } } on:date_selected={ set_date } />
 	{/if}
 
 	{#if count_input}
-		<TextInput on:set_count={ get_n_random } />
+		<TextInput on:close={ () => { count_input = false } } on:set_count={ get_n_random } />
 	{/if}
 
 	<Header on:open_date_selector={ () => { date_selector = !date_selector } } on:open_random_image={ () => { count_input = !count_input } } />
