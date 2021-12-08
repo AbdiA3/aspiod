@@ -60,7 +60,8 @@
     
     .main-content > img {
         height: 100%;
-        width: 40%;
+        min-width: 40%;
+        max-width: 40%;
         border-radius: 0.4em;
         object-fit: cover;
         object-position: center;
@@ -114,6 +115,7 @@
 
         .main-content > img {
             width: 100%;
+            max-width: 100%;
         }
 
         .video-link img {
